@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Container, Button } from '@mui/material';
+import { Typography, Container, Box } from '@mui/material';
 import './Home.css';
 
 const Home = () => {
@@ -11,26 +11,25 @@ const Home = () => {
   };
 
   const [welcomeMessage, setWelcomeMessage] = useState(getTimeOfDay());
-  const [time, setTime] = useState(new Date().toLocaleTimeString());
 
   useEffect(() => {
-    document.title = 'Home - Interactive Landing Page';
+    document.title = 'Friends - Fan page';
     console.log('Home component mounted');
-
-    const intervalId = setInterval(() => {
-      setTime(new Date().toLocaleTimeString());
-    }, 1000);
-
-    return () => clearInterval(intervalId);
   }, []);
 
   return (
-    <Container>
-      <Typography variant="h2" className="animated" gutterBottom>{welcomeMessage}, Welcome to our website!</Typography>
-      <Typography variant="h4" gutterBottom>Current Time: {time}</Typography>
-      <Typography variant="body1">This is the home page.</Typography>
-      
-    </Container>
+    <div className="home-page">
+      <Box className="background-container" />
+      <Container className="content-container">
+        <Typography variant="h4" className="animated" gutterBottom>{welcomeMessage}!</Typography>
+        <Typography variant="h3"> <br/>Welcome to the Ultimate "Friends" Fan Hub!</Typography>
+        <Typography variant="body1" gutterBottom>
+        <br/><br/>
+          "Friends" is the classic sitcom that captured hearts worldwide with its humorous take on friendship, love, and life in New York City. Follow the unforgettable journey of Ross, Rachel, Monica, Chandler, Joey, and Phoebe as they navigate the ups and downs of adulthood together.<br/><br/><br/>
+          Stay updated with the latest news, trivia, and behind-the-scenes stories about your favorite show and its cast. From reunion specials to exclusive interviews, we bring you everything "Friends" fans need to know.
+        </Typography>
+      </Container>
+    </div>
   );
 };
 
