@@ -28,7 +28,7 @@ const ContactUs = () => {
 
   return (
     <Container>
-      <Typography variant="h2" gutterBottom>Contact Us</Typography>
+      <Typography variant="h2" gutterBottom><br/>Contact Us<br/></Typography>
       <form onSubmit={handleSubmit}>
         <TextField
           label="Name"

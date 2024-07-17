@@ -1,0 +1,13 @@
+.about-page {
+    padding: 50px 0;
+  }
+  
+  .about-card {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .about-card img {
+    object-fit: cover;
+  }
+  
