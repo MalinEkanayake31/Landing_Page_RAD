@@ -75,6 +75,15 @@ const ContactUs = () => {
         <Button variant="contained" color="primary" type="submit">Submit</Button>
         {success && <p>{success}</p>}
       </form>
+
+      <Typography variant="body1" gutterBottom><br/><b>Social Media</b><br/>
+      Connect with us on social media for the latest updates, fan discussions, and more:<br/>
+      <ul>
+        <li>Instagram: @friendsfanhub</li>
+        <li>Twitter: @friendsfanhub</li>
+        <li>Facebook: Friends Fan Hub</li>
+      </ul>
+      </Typography>
     </Container>
   );
 };
