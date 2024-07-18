@@ -2,27 +2,36 @@ import React, { useState } from 'react';
 import { Typography, Container, TextField, Button } from '@mui/material';
 
 const ContactUs = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState('');
 
-  const validateEmail = (email) => {
-    const re = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-    return re.test(email);
+  const validate = (name, value) => {
+    const newErrors = {};
+    if (name === 'name' && !value) newErrors.name = 'Name is required';
+    if (name === 'email' && !value) newErrors.email = 'Email is required';
+    else if (name === 'email' && value && !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(value)) newErrors.email = 'Email is not valid';
+    if (name === 'message' && !value) newErrors.message = 'Message is required';
+    return newErrors;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    const newErrors = validate(name, value);
+    setErrors((prevErrors) => ({ ...prevErrors, ...newErrors }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newErrors = {};
-    if (!name) newErrors.name = 'Name is required';
-    if (!email) newErrors.email = 'Email is required';
-    else if (!validateEmail(email)) newErrors.email = 'Email is not valid';
-    if (!message) newErrors.message = 'Message is required';
-    setErrors(newErrors);
-
+    const newErrors = validate('name', formData.name) || validate('email', formData.email) || validate('message', formData.message);
     if (Object.keys(newErrors).length === 0) {
-      console.log({ name, email, message });
+      setSuccess('Form submitted successfully!');
+      setFormData({ name: '', email: '', message: '' });
+      setErrors({});
+    } else {
+      setErrors(newErrors);
+      setSuccess('');
     }
   };
 
@@ -32,8 +41,9 @@ const ContactUs = () => {
       <form onSubmit={handleSubmit}>
         <TextField
           label="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
           error={!!errors.name}
           helperText={errors.name}
           fullWidth
@@ -41,8 +51,9 @@ const ContactUs = () => {
         />
         <TextField
           label="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
           error={!!errors.email}
           helperText={errors.email}
           fullWidth
@@ -50,8 +61,9 @@ const ContactUs = () => {
         />
         <TextField
           label="Message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
           error={!!errors.message}
           helperText={errors.message}
           fullWidth
@@ -60,6 +72,7 @@ const ContactUs = () => {
           margin="normal"
         />
         <Button variant="contained" color="primary" type="submit">Submit</Button>
+        {success && <p>{success}</p>}
       </form>
     </Container>
   );

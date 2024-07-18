@@ -5,23 +5,25 @@ const ContactForm = () => {
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState('');
 
-  const validate = () => {
+  const validate = (name, value) => {
     const newErrors = {};
-    if (!formData.name) newErrors.name = 'Name is required';
-    if (!formData.email) newErrors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
-    if (!formData.message) newErrors.message = 'Message is required';
+    if (name === 'name' && !value) newErrors.name = 'Name is required';
+    if (name === 'email' && !value) newErrors.email = 'Email is required';
+    else if (name === 'email' && value && !/\S+@\S+\.\S+/.test(value)) newErrors.email = 'Email is invalid';
+    if (name === 'message' && !value) newErrors.message = 'Message is required';
     return newErrors;
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    const newErrors = validate(name, value);
+    setErrors((prevErrors) => ({ ...prevErrors, ...newErrors }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newErrors = validate();
+    const newErrors = validate('name', formData.name) || validate('email', formData.email) || validate('message', formData.message);
     if (Object.keys(newErrors).length === 0) {
       setSuccess('Form submitted successfully!');
       setFormData({ name: '', email: '', message: '' });
@@ -76,4 +78,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-
