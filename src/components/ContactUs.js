@@ -38,6 +38,7 @@ const ContactUs = () => {
   return (
     <Container>
       <Typography variant="h2" gutterBottom><br/>Contact Us<br/></Typography>
+      <Typography variant="body1" gutterBottom>We'd love to hear from you! Whether you have questions, feedback, or just want to share your love for "Friends," feel free to get in touch with us.<br/></Typography>
       <form onSubmit={handleSubmit}>
         <TextField
           label="Name"
