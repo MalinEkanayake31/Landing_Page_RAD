@@ -7,6 +7,15 @@ import phoebe from '../assets/kudrow-phoebe.jpg';
 import joey from '../assets/leblanc-joey.jpg';
 import ross from '../assets/schwimmer-ross.jpg';
 import chandler from '../assets/perry-chandler.jpg';
+import first from '../assets/general/1.jpg';
+import second from '../assets/general/2.jpg';
+import third from '../assets/general/3.jpg';
+import fourth from '../assets/general/4.jpg';
+import fifth from '../assets/general/5.jpg';
+import sixth from '../assets/general/6.jpg';
+import seventh from '../assets/general/7.jpg';
+import eight from '../assets/general/8.jpg';
+import nine from '../assets/general/9.jpg';
 
 const About = () => {
   return (
@@ -140,6 +149,105 @@ const About = () => {
         "Friends" featured numerous guest stars and supporting characters who added to the show's richness. From Tom Selleck's portrayal of Richard Burke to Reese Witherspoon as Rachel's sister, the series brought together a remarkable ensemble of talent that contributed to its enduring popularity.
 
         </Typography>
+
+        <Grid item xs={4} sm={4}>
+          <Card className="about-card">
+            <CardMedia
+              component="img"
+              height="240"
+              image={first}
+              alt="first"
+            />
+          </Card>
+        </Grid>
+
+        <Grid item xs={4} sm={4}>
+          <Card className="about-card">
+            <CardMedia
+              component="img"
+              height="240"
+              image={second}
+              alt="second"
+            />
+          </Card>
+        </Grid>
+
+        <Grid item xs={4} sm={4}>
+          <Card className="about-card">
+            <CardMedia
+              component="img"
+              height="240"
+              image={third}
+              alt="third"
+            />
+          </Card>
+        </Grid>
+
+        <Grid item xs={4} sm={4}>
+          <Card className="about-card">
+            <CardMedia
+              component="img"
+              height="240"
+              image={fourth}
+              alt="fourth"
+            />
+          </Card>
+        </Grid>
+
+        <Grid item xs={4} sm={4}>
+          <Card className="about-card">
+            <CardMedia
+              component="img"
+              height="240"
+              image={fifth}
+              alt="fifth"
+            />
+          </Card>
+        </Grid>
+
+        <Grid item xs={4} sm={4}>
+          <Card className="about-card">
+            <CardMedia
+              component="img"
+              height="240"
+              image={sixth}
+              alt="sixth"
+            />
+          </Card>
+        </Grid>
+
+        <Grid item xs={4} sm={4}>
+          <Card className="about-card">
+            <CardMedia
+              component="img"
+              height="240"
+              image={seventh}
+              alt="seventh"
+            />
+          </Card>
+        </Grid>
+
+        <Grid item xs={4} sm={4}>
+          <Card className="about-card">
+            <CardMedia
+              component="img"
+              height="240"
+              image={eight}
+              alt="eight"
+            />
+          </Card>
+        </Grid>
+
+        <Grid item xs={4} sm={4}>
+          <Card className="about-card">
+            <CardMedia
+              component="img"
+              height="240"
+              image={nine}
+              alt="nine"
+            />
+          </Card>
+        </Grid>
         
       </Grid>
     </Container>
