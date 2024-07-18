@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Container, Button, Box } from '@mui/material';
+import { Typography, Container, Button, Box, TextField } from '@mui/material';
 import './Home.css';
 
 const Home = () => {
@@ -11,18 +11,36 @@ const Home = () => {
   };
 
   const [welcomeMessage, setWelcomeMessage] = useState(getTimeOfDay());
+  const [name, setName] = useState('');
 
   useEffect(() => {
     document.title = 'Friends - Fan Page';
     console.log('Home component mounted');
   }, []);
 
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
   return (
     <div className="home-page">
       <Box className="background-container" />
       <Container className="content-container">
-        <Typography variant="h4" className="animated" gutterBottom>{welcomeMessage}!</Typography>
-        <Typography variant="h3"> <br/>Welcome to the Ultimate "Friends" Fan Hub!</Typography>
+        <div className='welcome-cont'>
+          <TextField 
+            type='text' 
+            value={name} 
+            onChange={handleNameChange}
+            placeholder='Enter your name'
+            variant='outlined'
+            fullWidth
+            margin='normal'
+          />
+          <Typography variant="h4" className="animated" gutterBottom>
+            {welcomeMessage} {name ? name : 'Guest'}!
+          </Typography>
+        </div>
+        <Typography variant="h3"><br/>Welcome to the Ultimate "Friends" Fan Hub!</Typography>
         <Typography variant="body1" gutterBottom>
           <br/><br/>
           "Friends" is the classic sitcom that captured hearts worldwide with its humorous take on friendship, love, and life in New York City. Follow the unforgettable journey of Ross, Rachel, Monica, Chandler, Joey, and Phoebe as they navigate the ups and downs of adulthood together.<br/><br/><br/>
@@ -35,4 +53,3 @@ const Home = () => {
 };
 
 export default Home;
-
