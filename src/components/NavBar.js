@@ -1,4 +1,3 @@
-// src/components/NavBar.js
 import React, { useContext, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
